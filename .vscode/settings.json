@@ -1,0 +1,17 @@
+{
+  // so that .mjs files with @import "tailwindcss"; get PostCSS support
+  "tailwindCSS.experimental.configFile": "postcss.config.mjs",
+
+  // map the languages VS Code sees → Tailwind’s IntelliSense
+  "tailwindCSS.includeLanguages": {
+    "postcss": "css",
+    "css": "css",
+    "typescriptreact": "html",
+    "javascriptreact": "html"
+  },
+
+  // disable the built-in CSS linter for at-rules it doesn’t know
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore"
+}

@@ -25,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${interSans.variable} ${sfMono.variable} antialiased`}>
+      <body
+        className={`${interSans.variable} ${sfMono.variable} antialiased bg-primary-blue`}
+      >
         {children}
       </body>
     </html>

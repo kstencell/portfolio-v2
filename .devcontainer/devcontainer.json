@@ -1,7 +1,6 @@
 {
   "name": "Next.js Dev Container",
   "image": "node:20-bullseye",
-  // "postCreateCommand": "npm install",
   "forwardPorts": [3000],
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",

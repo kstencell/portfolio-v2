@@ -8,7 +8,7 @@ const Experience: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col justify-center items-center w-3/5 max-w-[900px] py-24 mx-auto">
+    <div className="flex flex-col justify-center items-center w-full 2xl:w-3/5 max-w-[900px] py-24 mx-auto">
       {/* Section header */}
       <div className="flex items-center mt-[10px] mb-[40px] w-full self-start">
         <h1 className="flex gap-2 font-bold text-3xl items-baseline text-off-white">
@@ -27,16 +27,16 @@ const Experience: React.FC = () => {
           className="flex-row w-full"
         >
           {/* Sidebar list */}
-          <div className="flex items-top max-h-[200px] h-[200px] w-1/4">
+          <div className="flex items-top h-[200px] w-1/4">
             <div
-              className="relative left-0 w-[1px] h-full bg-green-accent transition-all duration-200"
+              className="relative flex-shrink-0 left-0 w-[2px] h-full bg-green-accent transition-all duration-200"
               style={{
                 top: `calc(${activeIndex} * 50px + 1px)`,
                 transition: "top 0.5s ease-in-out",
                 height: "48px",
               }}
             />
-            <TabsList className="w-full flex flex-col h-[200px] bg-transparent p-0 ">
+            <TabsList className="flex-1 flex-col h-[200px] bg-transparent p-0 ">
               {experience.map((exp) => (
                 <TabsTrigger
                   key={exp.company}

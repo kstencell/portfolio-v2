@@ -1,7 +1,7 @@
 const Hero: React.FC = () => {
   return (
     <div className="flex items-center min-h-[calc(100vh-6rem)] w-full max-w-[1000px] mx-auto">
-      <div className="flex flex-col justify-start items-start transform -translate-y-12">
+      <div className="flex flex-col justify-start items-start transform">
         <h1 className="text-lg mb-4 text-green-accent font-mono">
           Hi, my name is
         </h1>

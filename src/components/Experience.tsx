@@ -1,11 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { experience } from "@/data/experience";
 import { ChevronRight } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Experience: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // keep this in sync with your Tailwind md breakpoint (768px)
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center w-full 2xl:w-3/5 max-w-[900px] py-24 mx-auto">
@@ -18,35 +27,64 @@ const Experience: React.FC = () => {
         <div className="flex-1 h-px bg-gray-accent mx-4 opacity-25" />
       </div>
 
-      <div className="flex-row w-full">
+      <div className="flex flex-row w-full">
         <Tabs
           defaultValue={experience[0].company}
           onValueChange={(val) =>
             setActiveIndex(experience.findIndex((exp) => exp.company === val))
           }
-          className="flex-row w-full"
+          className="flex-col md:flex-row w-full"
         >
           {/* Sidebar list */}
-          <div className="flex items-top h-[200px] w-1/4">
-            <div
-              className="relative flex-shrink-0 left-0 w-[2px] h-full bg-green-accent transition-all duration-200"
-              style={{
-                top: `calc(${activeIndex} * 50px + 1px)`,
-                transition: "top 0.5s ease-in-out",
-                height: "48px",
-              }}
-            />
-            <TabsList className="flex-1 flex-col h-[200px] bg-transparent p-0 ">
-              {experience.map((exp) => (
-                <TabsTrigger
-                  key={exp.company}
-                  value={exp.company}
-                  className="!flex !justify-start !rounded-none !shadow-none !border-none w-full pl-5 bg-transparent text-gray-accent hover:text-green-accent data-[state=active]:text-green-accent hover:bg-secondary-blue data-[state=active]:bg-secondary-blue font-mono text-sm transition duration-500 ease-in-out"
-                >
-                  {exp.company}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+          <div className="flex flex-col md:flex-row items-top h-[50px] md:h-[200px] md:w-1/4">
+            {isMobile ? (
+              <>
+                <TabsList className="flex-1 flex-row flex-nowrap md:flex-col h-[50px] md:h-[200px] bg-transparent p-0 ">
+                  {experience.map((exp) => (
+                    <TabsTrigger
+                      key={exp.company}
+                      value={exp.company}
+                      className="!flex !justify-center md:!justify-start !flex-shrink-0 !px-4 !rounded-none !shadow-none !border-none w-full overflow-x-auto [&::-webkit-scrollbar]:hidden bg-transparent text-gray-accent hover:text-green-accent data-[state=active]:text-green-accent hover:bg-secondary-blue data-[state=active]:bg-secondary-blue font-mono text-sm transition duration-500 ease-in-out"
+                    >
+                      {exp.company}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                <div className="relative flex-shrink-0 bottom-0 h-[2px] w-full bg-light-blue-accent z-0">
+                  <div
+                    className="relative flex-shrink-0 bottom-0 h-[2px] w-1/4 bg-green-accent transition-all duration-200 z-10"
+                    style={{
+                      left: `calc(${activeIndex} * 25%)`,
+                      transition: "top 0.5s ease-in-out",
+                    }}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="relative flex-shrink-0 left-0 w-[2px] h-full bg-light-blue-accent z-0">
+                  <div
+                    className="relative flex-shrink-0 left-0 w-[2px] bg-green-accent transition-all duration-200 z-10"
+                    style={{
+                      top: `calc(${activeIndex} * 50px)`,
+                      transition: "top 0.5s ease-in-out",
+                      height: "50px",
+                    }}
+                  />
+                </div>
+                <TabsList className="flex-1 flex-row md:flex-col h-[50px] md:h-[200px] bg-transparent p-0 ">
+                  {experience.map((exp) => (
+                    <TabsTrigger
+                      key={exp.company}
+                      value={exp.company}
+                      className="!flex !justify-center md:!justify-start !rounded-none !shadow-none !border-none w-full md:pl-5 bg-transparent text-gray-accent hover:text-green-accent data-[state=active]:text-green-accent hover:bg-secondary-blue data-[state=active]:bg-secondary-blue font-mono text-sm transition duration-500 ease-in-out"
+                    >
+                      {exp.company}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </>
+            )}
           </div>
 
           {/* Content panels */}

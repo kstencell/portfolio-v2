@@ -61,8 +61,8 @@ const AboutMe: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full md:w-2/5">
-          <div className="w-full min-h-[300px] bg-white text-black">
+        <div className="flex items-start justify-center w-full md:w-2/5">
+          <div className="bg-white text-black aspect-square w-80 max-w-[400px] overflow-hidden">
             image place holder
           </div>
         </div>

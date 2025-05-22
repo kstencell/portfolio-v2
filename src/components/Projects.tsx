@@ -1,0 +1,87 @@
+import { projects } from "@/data/projects";
+import { Github, ExternalLink } from "lucide-react";
+
+const Projects: React.FC = () => (
+  <section
+    id="projects"
+    className="flex flex-col justify-center items-center w-full max-w-[1000px] py-24 mx-auto"
+  >
+    {/* Section header */}
+    <div className="flex items-center w-full mb-12">
+      <h2 className="flex gap-2 font-bold text-3xl items-baseline text-off-white">
+        <span className="font-mono text-green-accent text-2xl">03.</span>
+        Some Things I&apos;ve Built
+      </h2>
+      <div className="flex-1 h-px bg-gray-accent ml-4 opacity-25" />
+    </div>
+
+    <div className="space-y-24 w-full md:px-8">
+      {projects.map((p, i) => {
+        const isReversed = i % 2 === 1;
+        return (
+          <div
+            key={p.title}
+            className={
+              `flex flex-col items-center w-full items-stretch ` +
+              (isReversed ? "md:flex-row-reverse" : "md:flex-row")
+            }
+          >
+            {/* Image placeholder (60%) */}
+            <div className="w-full md:w-[60%] aspect-[8/5] rounded overflow-hidden bg-gray-accent">
+              {/* <img src={p.image} alt={p.title} className="w-full h-full object-cover"/> */}
+            </div>
+
+            {/* Text card (70%) overlapping by 10% */}
+            <div
+              className={
+                `flex flex-col w-full md:w-[70%] justify-around z-10 ` +
+                (isReversed
+                  ? "md:-mr-[10%] text-left"
+                  : "md:-ml-[10%] text-right")
+              }
+            >
+              <div>
+                <p className="text-sm font-mono text-green-accent">
+                  {p.subtitle}
+                </p>
+                <h3 className="text-2xl font-bold text-off-white">{p.title}</h3>
+              </div>
+              <p className="text-gray-accent bg-secondary-blue rounded-md p-6 shadow-md">
+                {p.description}
+              </p>
+
+              <ul
+                className={
+                  "flex flex-wrap gap-2 mb-4 " +
+                  (isReversed ? "justify-start" : "justify-end")
+                }
+              >
+                {p.tech.map((t) => (
+                  <li key={t} className="text-sm font-mono text-gray-accent">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className={
+                  "flex space-x-4 text-gray-accent " +
+                  (isReversed ? "justify-start" : "justify-end")
+                }
+              >
+                <a href="#" className="hover:text-green-accent">
+                  <Github />
+                </a>
+                <a href="#" className="hover:text-green-accent">
+                  <ExternalLink />
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+);
+
+export default Projects;

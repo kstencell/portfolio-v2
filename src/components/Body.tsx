@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "@/components/Hero";
 import AboutMe from "@/components/AboutMe";
 import Experience from "./Experience";
+import Projects from "./Projects";
 
 const Body: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Body: React.FC = () => {
       <Hero />
       <AboutMe />
       <Experience />
+      <Projects />
     </div>
   );
 };

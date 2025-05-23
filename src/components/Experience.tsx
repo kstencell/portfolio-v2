@@ -17,7 +17,7 @@ const Experience: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full max-w-[800px] py-24 mx-auto">
+    <div className="flex flex-col justify-start items-center w-full max-w-[800px] py-24 mx-auto sm:min-h-[600px] md:min-h-[550px]">
       {/* Section header */}
       <div className="flex items-center mt-[10px] mb-[40px] w-full self-start">
         <h1 className="flex gap-2 font-bold text-3xl items-baseline text-off-white">

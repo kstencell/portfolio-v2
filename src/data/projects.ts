@@ -17,7 +17,7 @@ export const projects: Project[] = [
     subtitle: "Featured Project",
     title: "Spotify Profile",
     description:
-      "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track.",
+      "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. ",
     tech: ["React", "Styled Components", "Express", "Spotify API", "Heroku"],
   },
 ];

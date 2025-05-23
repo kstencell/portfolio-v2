@@ -52,7 +52,7 @@ const Projects: React.FC = () => (
       ))}
     </div>
 
-    <div className="hidden md:block space-y-24 w-full md:px-8">
+    <div className="hidden md:block space-y-24 w-full">
       {projects.map((p, i) => {
         const isReversed = i % 2 === 1;
         return (
@@ -63,7 +63,7 @@ const Projects: React.FC = () => (
             }`}
           >
             {/* Image placeholder (60%) */}
-            <div className="w-full md:w-[60%] aspect-[8/5] rounded overflow-hidden bg-gray-accent self-start">
+            <div className="w-full md:w-[70%] aspect-[8/5] rounded overflow-hidden bg-gray-accent self-start">
               {/* <img src={p.image} alt={p.title} className="w-full h-full object-cover"/> */}
             </div>
 

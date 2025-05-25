@@ -7,9 +7,9 @@ const Projects: React.FC = () => (
     className="flex flex-col justify-center items-center w-full max-w-[1000px] py-24 mx-auto"
   >
     {/* Section header */}
-    <div className="flex items-center w-full mb-12">
-      <h2 className="flex gap-2 font-bold text-3xl items-baseline text-off-white">
-        <span className="font-mono text-green-accent text-2xl">03.</span>
+    <div className="flex items-center w-full mb-12 text-2xl md:text-3xl">
+      <h2 className="flex gap-2 font-bold items-baseline text-off-white">
+        <span className="font-mono text-green-accent">03.</span>
         Some Things I&apos;ve Built
       </h2>
       <div className="flex-1 h-px bg-gray-accent ml-4 opacity-25" />

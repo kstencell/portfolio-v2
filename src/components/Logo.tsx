@@ -26,7 +26,7 @@ const Logo = () => {
           height="50"
           viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
-          className="relative z-10 transition-transform duration-200 ease-out transform group-hover:-translate-x-1 group-hover:-translate-y-1"
+          className="relative z-10 transition-transform duration-100 ease-out transform group-hover:-translate-x-1 group-hover:-translate-y-1"
         >
           <polygon
             points="50,5 90,25 90,75 50,95 10,75 10,25"

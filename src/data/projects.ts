@@ -3,21 +3,32 @@ export interface Project {
   subtitle: string;
   description: string;
   tech: string[];
+  image: string;
 }
 
 export const projects: Project[] = [
   {
     subtitle: "Featured Project",
-    title: "Halcyon Theme",
+    title: "Guitar Practice",
     description:
-      "A minimal, dark blue theme for VS Code, Sublime Text, Atom, iTerm, and more. Available on Visual Studio Marketplace, Package Control, Atom Package Manager, and npm.",
-    tech: ["VS Code", "Sublime Text", "Atom", "iTerm2", "Hyper"],
+      "This is an iOS app developed, designed, and deployed solely by myself. It reached #23 on the App Store charts for music apps in Canada. It generates melodic chord progressions using randomly chosen chord positions along the fretboard.",
+    tech: ["Swift", "Xcode", "Python"],
+    image: "/guitar-practice-thumbnail-8x5.jpg",
   },
   {
     subtitle: "Featured Project",
-    title: "Spotify Profile",
+    title: "MarketMash",
     description:
-      "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. ",
-    tech: ["React", "Styled Components", "Express", "Spotify API", "Heroku"],
+      "Did you know that Adobe is a bigger than The Walt Disney Company? Inspired by Mark Zuckerberg's infamous sophomore project FaceMash, MarketMash chooses from the 100 biggest companies in the world and has you guess which one you think is bigger",
+    tech: ["React", "Docker", "Nginx", "Digital Ocean"],
+    image: "/marketmash-thumbnail-8x5.png",
+  },
+  {
+    subtitle: "Featured Project",
+    title: "This Website",
+    description:
+      "This is the website you are currently viewing. It was built using Next.js, TypeScript, and Tailwind CSS. The source code is available on GitHub.",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    image: "/portfolio-website-thumbnail-8x5.png",
   },
 ];

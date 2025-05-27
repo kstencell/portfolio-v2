@@ -37,7 +37,7 @@ const Button: React.FC<ButtonProps> = ({
         />
 
         {/* top layer: button text, also shifts on hover */}
-        <span className="relative text-green-accent font-mono transition-transform duration-200 ease-out transform group-hover:-translate-x-1 group-hover:-translate-y-1 z-20">
+        <span className="relative text-green-accent font-mono transition-transform duration-100 ease-out transform group-hover:-translate-x-1 group-hover:-translate-y-1 z-20">
           {text}
         </span>
       </button>

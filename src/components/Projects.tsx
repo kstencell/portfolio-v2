@@ -1,5 +1,7 @@
+"use client";
 import { projects } from "@/data/projects";
 import { Github, ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const Projects: React.FC = () => (
   <section
@@ -18,28 +20,36 @@ const Projects: React.FC = () => (
     {/* Mobile layout: text-over-image overlay */}
     <div className="md:hidden space-y-12 w-full">
       {projects.map((p) => (
-        <div key={p.title} className="relative w-full">
-          <div className="absolute inset-0 rounded-md overflow-hidden bg-secondary-blue">
-            {/* <img src={p.image} alt={p.title} className="w-full h-full object-cover" /> */}
+        <div key={p.title} className="relative w-full min-h-[350px]">
+          <div className="absolute inset-0 rounded-md overflow-hidden">
+            <Image
+              src={p.image}
+              alt={p.title}
+              width={800}
+              height={500}
+              className="w-full h-full aspect-[8/5] object-cover"
+            />
+            <div className="absolute inset-0 w-full h-full bg-green-accent/10" />
+            <div className="absolute inset-0 w-full h-full bg-primary-blue/90" />
           </div>
-          <div className="relative p-6 rounded-md shadow-md space-y-4">
+          <div className="relative flex flex-col min-h-[350px] p-6 rounded-md justify-between">
             <div>
               <p className="text-sm font-mono text-green-accent">
                 {p.subtitle}
               </p>
               <h3 className="text-2xl font-bold text-off-white">{p.title}</h3>
             </div>
-            <p className="text-gray-accent">{p.description}</p>
+            <p className="text-off-white">{p.description}</p>
 
-            <ul className="flex flex-wrap gap-2 mb-4 justify-right">
+            <ul className="flex flex-wrap gap-2 mb-4 justify-start">
               {p.tech.map((t) => (
-                <li key={t} className="text-sm font-mono text-gray-accent">
+                <li key={t} className="text-sm font-mono text-off-white">
                   {t}
                 </li>
               ))}
             </ul>
 
-            <div className={"flex space-x-4 text-gray-accent justify-right "}>
+            <div className="flex space-x-4 text-off-white justify-start">
               <a href="#" className="hover:text-green-accent">
                 <Github />
               </a>
@@ -63,13 +73,22 @@ const Projects: React.FC = () => (
             }`}
           >
             {/* Image placeholder (60%) */}
-            <div className="w-full md:w-[70%] aspect-[8/5] rounded overflow-hidden bg-gray-accent self-start">
-              {/* <img src={p.image} alt={p.title} className="w-full h-full object-cover"/> */}
+            <div className="w-full md:w-[70%] aspect-[8/5] rounded overflow-hidden self-start relative group z-0">
+              <Image
+                src={p.image}
+                alt={p.title}
+                width={800}
+                height={500}
+                className="w-full h-full object-cover"
+              />
+              {/* Green overlay with fade on hover */}
+              <div className="absolute inset-0 w-full h-full bg-green-accent/20 transition-opacity duration-150 opacity-100 group-hover:opacity-0" />
+              <div className="absolute inset-0 w-full h-full bg-primary-blue/50 transition-opacity duration-150 opacity-100 group-hover:opacity-0" />
             </div>
 
             {/* Text card (70%) overlapping by 10% */}
             <div
-              className={`w-full md:w-[70%] flex flex-col justify-around ${
+              className={`w-full md:w-[70%] flex flex-col justify-around z-10 ${
                 isReversed
                   ? "md:-mr-[10%] text-left"
                   : "md:-ml-[10%] text-right"

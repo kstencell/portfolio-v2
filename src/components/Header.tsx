@@ -17,27 +17,27 @@ const Header: React.FC = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY;
-
-    if (currentScrollY > SCROLL_THRESHOLD) {
-      setHasScrolled(true); // Add shadow after crossing threshold
-      if (currentScrollY > lastScrollY) {
-        // Scrolling down
-        setIsHeaderVisible(false);
-      } else {
-        // Scrolling up
-        setIsHeaderVisible(true);
-      }
-    } else {
-      setHasScrolled(false); // Remove shadow when near the top
-      setIsHeaderVisible(true); // Ensure header remains visible near the top
-    }
-
-    setLastScrollY(currentScrollY);
-  };
-
   useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > SCROLL_THRESHOLD) {
+        setHasScrolled(true); // Add shadow after crossing threshold
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setIsHeaderVisible(false);
+        } else {
+          // Scrolling up
+          setIsHeaderVisible(true);
+        }
+      } else {
+        setHasScrolled(false); // Remove shadow when near the top
+        setIsHeaderVisible(true); // Ensure header remains visible near the top
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
     // Scroll listener
     window.addEventListener("scroll", handleScroll);
 
@@ -45,13 +45,7 @@ const Header: React.FC = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
-
-  const handleResize = () => {
-    if (window.innerWidth >= 768 && isSidebarOpen) {
-      setIsSidebarOpen(false);
-    }
-  };
+  }, [lastScrollY, SCROLL_THRESHOLD]);
 
   useEffect(() => {
     // Handle scroll lock when sidebar is open
@@ -60,6 +54,13 @@ const Header: React.FC = () => {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
+
+    // Define handleResize inside useEffect to avoid missing dependency warning
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
 
     // Attach resize event listener
     window.addEventListener("resize", handleResize);
@@ -73,12 +74,12 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`bg-primary-blue flex items-center justify-between p-4 pl-10 pr-10 h-24 z-50 fixed top-0 left-0 right-0 transform transition-transform duration-200
+      className={`flex items-center justify-between p-4 pl-10 pr-10 h-24 z-50 fixed top-0 left-0 right-0 transform transition-transform duration-200
         ${isHeaderVisible ? "translate-y-0" : "-translate-y-full"}
         ${
           hasScrolled && !isSidebarOpen
-            ? "shadow-lg bg-opacity-80 backdrop-blur-xl"
-            : ""
+            ? "shadow-lg bg-primary-blue/80 backdrop-blur-lg"
+            : "bg-primary-blue"
         }`}
     >
       <Logo />

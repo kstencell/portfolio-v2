@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
         </p>
         <Button
           text="Learn more about me"
-          link="/"
+          link="#about"
           bg_colour="primary-blue"
           button_padding="py-4 px-6"
         />

@@ -16,19 +16,36 @@ const SocialIcons: React.FC<SideFixtureProps> = ({
   return (
     <div
       className={`flex ${
-        orientation === "row" ? "" : "flex-col gap-12 h-[199px]"
+        orientation === "row" ? "gap-12" : "flex-col gap-12 h-[199px]"
       } justify-between items-center`}
     >
-      {/* <GithubIcon size={size} className={textColor}/> */}
-      <div className={`transition-transform duration-200 hover:-translate-y-1`}>
+      <a
+        href="https://github.com/kstencell"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        className="transition-transform duration-200 hover:-translate-y-1"
+      >
         <GithubIcon size={size} className={textColor} />
-      </div>
-      <div className={`transition-transform duration-200 hover:-translate-y-1`}>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/karl-stencell/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+        className="transition-transform duration-200 hover:-translate-y-1"
+      >
         <LinkedinIcon size={size} className={textColor} />
-      </div>
-      <div className={`transition-transform duration-200 hover:-translate-y-1`}>
+      </a>
+      <a
+        href="https://www.instagram.com/karldstencell/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="transition-transform duration-200 hover:-translate-y-1"
+      >
         <InstagramIcon size={size} className={textColor} />
-      </div>
+      </a>
     </div>
   );
 };

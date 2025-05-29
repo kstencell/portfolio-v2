@@ -1,11 +1,15 @@
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 const AboutMe: React.FC = () => {
   return (
-    <div className="flex flex-col justify-center items-center w-full max-w-[900px] py-24 mx-auto">
+    <section
+      id="about"
+      className="flex flex-col justify-center items-center w-full max-w-[900px] py-24 mx-auto"
+    >
       <div className="flex items-center mt-[10px] mb-[40px] w-full md:w-3/5 self-start text-2xl md:text-3xl">
-        <h1 className="flex gap-2 font-bold items-baseline text-off-white">
-          <span className="font-mono text-green-accent">01.</span>
+        <h1 className="flex gap-2 font-bold items-baseline text-off-white items-center">
+          <span className="font-mono text-green-accent text-lg">01.</span>
           About Me
         </h1>
         <div className="flex-1 h-px bg-gray-accent mx-4 opacity-25"></div>
@@ -62,12 +66,21 @@ const AboutMe: React.FC = () => {
           </div>
         </div>
         <div className="flex items-start justify-center w-full md:w-2/5">
-          <div className="bg-white text-black aspect-square w-80 overflow-hidden">
-            image place holder
+          <div className="relative group aspect-square w-80">
+            <div className="absolute inset-0 translate-y-4 translate-x-4 border-2 border-green-accent rounded transition-transform duration-300 group-hover:translate-x-5 group-hover:translate-y-5 z-0" />
+            <div className="absolute inset-0 z-10 transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
+              <Image
+                src="/me.png"
+                alt="Profile picture of Karl Stencell"
+                fill
+                className="object-cover rounded"
+                sizes="(max-width: 768px) 80vw, 300px"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -10,8 +10,8 @@ const Projects: React.FC = () => (
   >
     {/* Section header */}
     <div className="flex items-center w-full mb-12 text-2xl md:text-3xl">
-      <h2 className="flex gap-2 font-bold items-baseline text-off-white">
-        <span className="font-mono text-green-accent">03.</span>
+      <h2 className="flex gap-2 font-bold items-baseline text-off-white items-center">
+        <span className="font-mono text-green-accent text-lg">03.</span>
         Some Things I&apos;ve Built
       </h2>
       <div className="flex-1 h-px bg-gray-accent ml-4 opacity-25" />
@@ -21,23 +21,38 @@ const Projects: React.FC = () => (
     <div className="md:hidden space-y-12 w-full">
       {projects.map((p) => (
         <div key={p.title} className="relative w-full min-h-[350px]">
-          <div className="absolute inset-0 rounded-md overflow-hidden">
+          <a
+            href={p.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0 rounded-md overflow-hidden z-10 focus:outline-none focus:ring-2 focus:ring-green-accent"
+            aria-label={`View ${p.title} on GitHub`}
+            tabIndex={0}
+          >
             <Image
               src={p.image}
               alt={p.title}
               width={800}
               height={500}
-              className="w-full h-full aspect-[8/5] object-cover"
+              className="w-full h-full aspect-[8/5] object-cover pointer-events-none"
             />
             <div className="absolute inset-0 w-full h-full bg-green-accent/10" />
             <div className="absolute inset-0 w-full h-full bg-primary-blue/90" />
-          </div>
-          <div className="relative flex flex-col min-h-[350px] p-6 rounded-md justify-between">
+          </a>
+          <div className="relative flex flex-col min-h-[350px] p-6 rounded-md justify-between z-20">
             <div>
               <p className="text-sm font-mono text-green-accent">
                 {p.subtitle}
               </p>
-              <h3 className="text-2xl font-bold text-off-white">{p.title}</h3>
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-green-accent"
+                aria-label={`View ${p.title} on GitHub`}
+              >
+                <h3 className="text-2xl font-bold text-off-white">{p.title}</h3>
+              </a>
             </div>
             <p className="text-off-white">{p.description}</p>
 
@@ -50,18 +65,33 @@ const Projects: React.FC = () => (
             </ul>
 
             <div className="flex space-x-4 text-off-white justify-start">
-              <a href="#" className="hover:text-green-accent">
+              <a
+                href={p.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-green-accent"
+                aria-label={`View ${p.title} on GitHub`}
+              >
                 <Github />
               </a>
-              <a href="#" className="hover:text-green-accent">
-                <ExternalLink />
-              </a>
+              {p.link && (
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-accent"
+                  aria-label={`View ${p.title} external link`}
+                >
+                  <ExternalLink />
+                </a>
+              )}
             </div>
           </div>
         </div>
       ))}
     </div>
 
+    {/* Desktop layout */}
     <div className="hidden md:block space-y-24 w-full">
       {projects.map((p, i) => {
         const isReversed = i % 2 === 1;
@@ -72,21 +102,28 @@ const Projects: React.FC = () => (
               isReversed ? "md:flex-row-reverse" : ""
             }`}
           >
-            {/* Image placeholder (60%) */}
-            <div className="w-full md:w-[70%] aspect-[8/5] rounded overflow-hidden self-start relative group z-0">
+            {/* Image as link */}
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-[70%] aspect-[8/5] rounded overflow-hidden self-start relative group z-0 block focus:outline-none focus:ring-2 focus:ring-green-accent"
+              aria-label={`View ${p.title} on GitHub`}
+              tabIndex={0}
+            >
               <Image
                 src={p.image}
                 alt={p.title}
                 width={800}
                 height={500}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover pointer-events-none"
               />
               {/* Green overlay with fade on hover */}
               <div className="absolute inset-0 w-full h-full bg-green-accent/20 transition-opacity duration-150 opacity-100 group-hover:opacity-0" />
               <div className="absolute inset-0 w-full h-full bg-primary-blue/50 transition-opacity duration-150 opacity-100 group-hover:opacity-0" />
-            </div>
+            </a>
 
-            {/* Text card (70%) overlapping by 10% */}
+            {/* Text card */}
             <div
               className={`w-full md:w-[70%] flex flex-col justify-around z-10 ${
                 isReversed
@@ -98,9 +135,19 @@ const Projects: React.FC = () => (
                 <p className="text-sm font-mono text-green-accent">
                   {p.subtitle}
                 </p>
-                <h3 className="text-2xl font-bold text-off-white">{p.title}</h3>
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-accent"
+                  aria-label={`View ${p.title} on GitHub`}
+                >
+                  <h3 className="text-2xl font-bold text-off-white hover:text-green-accent">
+                    {p.title}
+                  </h3>
+                </a>
               </div>
-              <p className="text-gray-accent bg-secondary-blue rounded-md p-6 shadow-md">
+              <p className="text-off-white bg-secondary-blue rounded-md p-6 shadow-md">
                 {p.description}
               </p>
 
@@ -123,12 +170,26 @@ const Projects: React.FC = () => (
                   (isReversed ? "justify-start" : "justify-end")
                 }
               >
-                <a href="#" className="hover:text-green-accent">
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-accent"
+                  aria-label={`View ${p.title} on GitHub`}
+                >
                   <Github />
                 </a>
-                <a href="#" className="hover:text-green-accent">
-                  <ExternalLink />
-                </a>
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-green-accent"
+                    aria-label={`View ${p.title} external link`}
+                  >
+                    <ExternalLink />
+                  </a>
+                )}
               </div>
             </div>
           </div>

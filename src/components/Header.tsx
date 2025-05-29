@@ -85,12 +85,19 @@ const Header: React.FC = () => {
       <Logo />
       <div className="hidden md:flex items-center space-x-8">
         <NavLinks orientation="row" />
-        <Button text="Resume" link="/" bg_colour="primary-blue" />
+        <Button
+          text="Resume"
+          link="/karl-stencell-resume.pdf"
+          bg_colour="primary-blue"
+          button_padding="py-2 px-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        />
       </div>
       <button onClick={toggleSidebar} className="md:hidden z-50">
         <HamburgerMenuIcon isOpen={isSidebarOpen} />
       </button>
-      <SideBar isOpen={isSidebarOpen} />
+      <SideBar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       {isSidebarOpen && (
         <div
           onClick={toggleSidebar}

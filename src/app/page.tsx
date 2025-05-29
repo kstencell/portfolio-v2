@@ -15,12 +15,13 @@ export default function Home() {
       <SideFixture
         orientation="right"
         content={
-          <div
+          <a
+            href="mailto:karldstencell@gmail.com"
             className="text-sm text-gray-accent font-mono hover:text-green-accent transition duration-200 transform hover:-translate-y-2"
             style={{ writingMode: "vertical-rl" }}
           >
             karldstencell@gmail.com
-          </div>
+          </a>
         }
       />
     </div>

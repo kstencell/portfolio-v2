@@ -2,6 +2,7 @@ import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import ClientRoot from "./ClientRoot";
 
 const interSans = Inter({
   variable: "--font-inter-sans",
@@ -72,7 +73,7 @@ export default function RootLayout({
       <body
         className={`${interSans.variable} ${sfMono.variable} antialiased bg-primary-blue`}
       >
-        {children}
+        <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
   );

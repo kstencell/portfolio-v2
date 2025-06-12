@@ -70,6 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head />
       <body
         className={`${interSans.variable} ${sfMono.variable} antialiased bg-primary-blue`}
       >

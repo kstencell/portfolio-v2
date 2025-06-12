@@ -35,7 +35,7 @@ export const metadata = {
     siteName: "Karl Stencell Portfolio",
     images: [
       {
-        url: "/portfolio-website-thumbnail-8x5.png",
+        url: "https://karlstencell.com/portfolio-website-thumbnail-8x5.png",
         width: 1200,
         height: 630,
         alt: "Karl Stencell Portfolio",
@@ -49,7 +49,7 @@ export const metadata = {
     title: "Karl Stencell | Software Engineer",
     description:
       "Portfolio website for Karl Stencell, software engineer and automation enthusiast.",
-    images: ["/portfolio-website-thumbnail-8x5.png"],
+    images: ["https://karlstencell.com/portfolio-website-thumbnail-8x5.png"],
   },
   alternates: {
     canonical: "https://karlstencell.com",

@@ -1,34 +1,21 @@
 "use client";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
-function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < breakpoint);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, [breakpoint]);
-  return isMobile;
-}
+import MaybeMotion from "@/components/MaybeMotion";
 
 const AboutMe: React.FC = () => {
-  const isMobile = useIsMobile();
-
   return (
     <section
       id="about"
       className="flex flex-col justify-center items-center w-full max-w-[900px] py-24 mx-auto"
     >
-      <motion.div
+      <MaybeMotion
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        viewport={{ once: true, amount: isMobile ? 0.3 : 0.5 }}
+        viewport={{ once: true, amount: 0.5 }}
       >
+        {/* Section header */}
         <div className="flex items-center mt-[10px] mb-[40px] w-full md:w-3/5 self-start text-2xl md:text-3xl">
           <h1 className="flex gap-2 font-bold items-baseline text-off-white items-center">
             <span className="font-mono text-green-accent text-lg">01.</span>
@@ -103,7 +90,7 @@ const AboutMe: React.FC = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </MaybeMotion>
     </section>
   );
 };

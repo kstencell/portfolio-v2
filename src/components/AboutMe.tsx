@@ -80,7 +80,7 @@ const AboutMe: React.FC = () => {
               <div className="absolute inset-0 translate-y-4 translate-x-4 border-2 border-green-accent rounded transition-transform duration-300 group-hover:translate-x-5 group-hover:translate-y-5 z-0" />
               <div className="absolute inset-0 z-10 transition-transform duration-300 group-hover:-translate-x-1 group-hover:-translate-y-1">
                 <Image
-                  src="/me.png"
+                  src="/me.jpg"
                   alt="Profile picture of Karl Stencell"
                   fill
                   className="object-cover rounded"

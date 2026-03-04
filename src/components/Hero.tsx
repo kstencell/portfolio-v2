@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 
 const Hero: React.FC = () => {
   return (
-    <div className="flex items-center min-h-[calc(100vh-6rem)] w-full max-w-[1000px] mx-auto mt-[4rem] md:mt-[3rem]">
+    <div className="flex items-center min-h-[calc(100vh-6rem)] w-full max-w-[1000px] mx-auto mt-[6rem] md:mt-[3rem]">
       <div className="flex flex-col items-start transform">
         <h1 className="text-lg mb-4 text-green-accent font-mono">
           Hi, my name is

@@ -10,12 +10,17 @@ interface SideBarProps {
 const SideBar: React.FC<SideBarProps> = ({ isOpen, onClose }) => {
   return (
     <div
-      className={`fixed top-0 right-0 flex flex-col justify-center items-center h-screen gap-8 bg-secondary-blue shadow-lg transition-transform transform duration-300 ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      } w-3/4 max-w-[300px] z-40`}
+      className={`fixed top-0 right-0 flex flex-col justify-center items-center h-screen gap-8 bg-secondary-blue shadow-lg transition-transform transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
+        } w-3/4 max-w-[300px] z-40`}
     >
       <NavLinks orientation="col" onLinkClick={onClose} />
-      <Button text="Resume" link="/" bg_colour="secondary-blue" />
+      <Button
+        text="Resume"
+        link="/karl-stencell-resume.pdf"
+        bg_colour="secondary-blue"
+        target="_blank"
+        rel="noopener noreferrer"
+      />
     </div>
   );
 };

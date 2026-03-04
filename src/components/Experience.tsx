@@ -43,8 +43,8 @@ const Experience: React.FC = () => {
                 <time className="block text-gray-accent">{exp.dates}</time>
                 <ul className="space-y-1">
                   {exp.description.map((line, i) => (
-                    <li key={i} className="flex items-start text-gray-accent">
-                      <ChevronRight className="w-5 h-5 text-green-accent mr-2 flex-shrink-0" />
+                    <li key={i} className="flex items-start text-gray-accent mt-2">
+                      <ChevronRight className="w-5 h-5 text-green-accent mr-2 flex-shrink-0 mt-0.5" />
                       {line}
                     </li>
                   ))}
@@ -105,9 +105,9 @@ const Experience: React.FC = () => {
                       {exp.description.map((line, i) => (
                         <li
                           key={i}
-                          className="flex items-start text-gray-accent"
+                          className="flex items-start text-gray-accent mt-2"
                         >
-                          <ChevronRight className="w-5 h-5 text-green-accent mr-2 flex-shrink-0" />
+                          <ChevronRight className="w-5 h-5 text-green-accent mr-2 flex-shrink-0 mt-0.5" />
                           {line}
                         </li>
                       ))}
